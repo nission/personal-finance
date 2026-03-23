@@ -1,0 +1,61 @@
+{
+  "skill_name": "personal-finance",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "record-personal-expense",
+      "prompt": "午饭花了35，记一下",
+      "expected_output": "记录到 personal 账本，金额 ¥35，分类餐饮，显示预算状态",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "record-household-expense",
+      "prompt": "家里交了200电费",
+      "expected_output": "识别为 household 账本，记录电费支出 ¥200，分类居住",
+      "files": []
+    },
+    {
+      "id": 3,
+      "eval_name": "create-new-ledger",
+      "prompt": "创建一个旅行账本，准备记录去日本的支出",
+      "expected_output": "创建新的 ledger 目录，初始化 config.json，更新 ledgers.json",
+      "files": []
+    },
+    {
+      "id": 4,
+      "eval_name": "switch-ledger",
+      "prompt": "切换到家庭账本，然后买菜花了150",
+      "expected_output": "切换 current_ledger 为 household，记录支出到 household 账本",
+      "files": []
+    },
+    {
+      "id": 5,
+      "eval_name": "monthly-summary",
+      "prompt": "查看这个月花了多少",
+      "expected_output": "汇总当月支出，按分类显示，对比预算",
+      "files": []
+    },
+    {
+      "id": 6,
+      "eval_name": "cross-ledger-summary",
+      "prompt": "查看全部支出",
+      "expected_output": "显示所有账本的支出汇总和总计",
+      "files": []
+    },
+    {
+      "id": 7,
+      "eval_name": "set-budget",
+      "prompt": "设置月预算5000，餐饮预算1500",
+      "expected_output": "更新 config.json 中的 budget 设置",
+      "files": []
+    },
+    {
+      "id": 8,
+      "eval_name": "expense-with-note",
+      "prompt": "记一笔，买咖啡28块，备注是星巴克的拿铁",
+      "expected_output": "记录 ¥28 到餐饮或饮品分类，包含备注信息",
+      "files": []
+    }
+  ]
+}
