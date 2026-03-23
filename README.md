@@ -1,172 +1,172 @@
-# Personal Finance 记账技能
+# Personal Finance Skill for Claude Code
 
-一个多账本日常记账工具，支持支出记录、分类管理、预算追踪和多端同步。
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-blue)](https://claude.ai/code)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-## 功能特点
+A powerful multi-ledger expense tracking skill for Claude Code. Track personal, household, and custom ledger expenses with budget management and iCloud sync.
 
-- 📝 **多账本管理** - 支持个人、家庭及自定义账本（旅行、副业、宠物等）
-- 🔍 **智能识别** - 通过关键词自动识别账本，快速记账
-- 💰 **预算追踪** - 设置月度总预算和分类预算，实时监控支出
-- 📊 **支出汇总** - 单日明细、月度汇总、跨账本统计
-- ☁️ **iCloud 同步** - 优先存储在 iCloud Drive，支持 iPhone/iPad/Mac 多端同步
+## ✨ Features
 
-## 安装方法
+- 📝 **Multi-Ledger Support** - Personal, household, and unlimited custom ledgers (travel, side business, pet, etc.)
+- 🔍 **Smart Recognition** - Auto-detects ledger from keywords (e.g., "family dinner" → household ledger)
+- 💰 **Budget Tracking** - Set monthly total and per-category budgets with real-time progress
+- 📊 **Rich Summaries** - Daily details, monthly summaries, cross-ledger reports
+- ☁️ **iCloud Sync** - Native iCloud Drive support for iPhone/iPad/Mac access
+- 🌍 **Bilingual** - Full Chinese and English support
 
-在 Claude Code 中执行：
+## 🚀 Quick Start
+
+### Installation
+
 ```bash
-claude skills install personal-finance.skill
+# Download from GitHub
+git clone https://github.com/nission/personal-finance.git
+
+# Install in Claude Code
+claude skills install personal-finance/personal-finance.skill
 ```
 
-## 快速开始
-
-### 1. 记录支出
+### Record Expense
 
 ```
-午饭花了35
-→ 已记录 [个人]: 餐饮 ¥35.00 (午饭)
+You: Lunch cost me 35
+Claude: ✅ Recorded [Personal]: Food ¥35.00 (Lunch)
 
-家里交了200电费
-→ 已记录 [家庭]: 居住 ¥200.00 (电费)
+You: Paid 200 for home electricity
+Claude: ✅ Recorded [Household]: Housing ¥200.00 (Electricity)
 
-副业服务器花了500
-→ 已记录 [副业]: 服务器 ¥500.00
+You: Flight to Japan 3500
+Claude: ✅ Recorded [Travel]: Transport ¥3,500.00
 ```
 
-### 2. 查看支出
+### View Summaries
 
 ```
-今天花了多少
-→ 显示今日支出明细
-
-查看这个月花了多少
-→ 📊 个人 - 2026年3月支出汇总
-   | 分类 | 金额 | 预算 | 进度 |
-   | 餐饮 | ¥245 | ¥500 | 49% |
-   | 交通 | ¥120 | ¥200 | 60% |
-
-查看全部支出
-→ 显示所有账本汇总和总计
+You: How much did I spend this month?
+Claude: 📊 Personal - March 2026 Summary
+       ┌──────────┬────────┬────────┬──────┐
+       │ Category │ Amount │ Budget │  %   │
+       ├──────────┼────────┼────────┼──────┤
+       │ Food     │ ¥245   │ ¥500   │ 49%  │
+       │ Transport│ ¥120   │ ¥200   │ 60%  │
+       │ Shopping │ ¥800   │ ¥1000  │ 80%  │
+       └──────────┴────────┴────────┴──────┘
+       **Total**: ¥1,165 / ¥2,000 (58%)
 ```
 
-### 3. 管理账本
+## 📁 Data Storage
+
+Files are stored in iCloud Drive (auto-sync across devices):
 
 ```
-有哪些账本
-→ 列出所有账本和当前激活账本
-
-切换到家庭账本
-→ 后续记录默认记入家庭支出
-
-创建一个旅行账本
-→ 创建新账本并自动切换
+iCloud Drive/记账/
+├── ledgers.json          # Ledger index
+├── personal/
+│   ├── config.json       # Budget settings
+│   └── 2026/03/2026-03-23.md  # Daily records
+├── household/
+└── travel/
 ```
 
-### 4. 设置预算
+Access your data directly in iPhone/iPad Files app!
+
+## 🎯 Trigger Phrases
+
+- **Record**: "spent", "cost", "expense", "记账", "花了"
+- **Query**: "how much", "summary", "支出", "花了多少"
+- **Budget**: "budget", "set budget", "预算"
+- **Ledger**: "ledger", "switch to", "账本"
+
+## 🛠️ Create Custom Ledger
 
 ```
-设置月预算5000
-→ 设置当月总预算
+You: Create a pet ledger
+Claude: Created [Pet] ledger with categories:
+       - Food, Medical, Supplies, Grooming
 
-餐饮预算1500
-→ 设置分类预算
-
-预算还剩多少
-→ 显示剩余预算和进度
+You: Cat food 89
+Claude: ✅ Recorded [Pet]: Food ¥89.00
 ```
 
-## 账本说明
+## 📝 Budget Configuration
 
-### 预设账本
-
-| 账本 | 关键词 | 用途 |
-|------|--------|------|
-| 个人 | (默认) | 个人日常支出 |
-| 家庭 | 家庭、家里、家用、孩子、房贷 | 家庭共同支出 |
-
-### 创建自定义账本
-
-```
-创建一个宠物账本
-→ 系统会询问：
-   - 账本ID: pet
-   - 显示名称: 宠物
-   - 关键词: 宠物、猫、狗、猫粮、狗粮
-   - 分类: 食品、医疗、用品、美容、其他
-```
-
-## 存储位置
-
-数据存储在以下位置（按优先级）：
-
-1. `~/Library/Mobile Documents/com~apple~CloudDocs/记账/` (iCloud Drive)
-2. `~/iCloud Drive/记账/`
-3. `~/finance/` (本地)
-
-**文件结构：**
-```
-记账/
-├── ledgers.json          # 账本索引
-├── personal/             # 个人账本
-│   ├── config.json       # 预算配置
-│   └── 2026/03/2026-03-23.md  # 每日支出记录
-├── household/            # 家庭账本
-└── travel/               # 自定义账本
-```
-
-## 预算配置
-
-在 `config.json` 中配置：
+Edit `config.json` in any ledger:
 
 ```json
 {
   "currency": "CNY",
-  "currency_symbol": "¥",
-  "categories": ["餐饮", "交通", "购物", "娱乐", "居住", "医疗", "教育", "其他"],
+  "categories": ["Food", "Transport", "Shopping", "Other"],
   "budget": {
     "monthly_total": 5000,
     "by_category": {
-      "餐饮": 1500,
-      "交通": 800
+      "Food": 1500,
+      "Transport": 800
     }
   }
 }
 ```
 
-## 触发方式
+## 📸 Screenshots
 
-说出以下关键词即可触发：
-- 记账相关：记账、花了、支出、花销、开销、记一下
-- 预算相关：预算、设置预算
-- 账本相关：账本、切换账本
-- 英文：spent、expense、budget
+### Recording Expense
+```
+已记录 [个人]: 餐饮 ¥35.00 (午饭)
+本月餐饮: ¥892/¥1500 (59%)
+```
 
-## 使用示例
+### Monthly Summary
+```
+📊 个人 - 2026年3月支出汇总
 
-| 用户输入 | 操作 |
-|---------|------|
-| 早餐15 | 记15元到当前账本，分类餐饮 |
-| 昨天打车45 | 记45元到昨日，分类交通 |
-| 信用卡还款3000 | 记3000元，分类金融 |
-| 设置预算 | 引导设置月预算和分类预算 |
-| 家庭聚餐500 | 自动识别为家庭账本支出 |
-| 查看全部支出 | 显示所有账本月度汇总 |
+| 分类 | 金额 | 预算 | 进度 |
+|------|------|------|------|
+| 餐饮 | ¥1,245 | ¥1,500 | 83% |
+| 交通 | ¥380   | ¥500   | 76% |
 
-## 注意事项
+**月合计**: ¥5,832 / ¥8,000 (73%)
+剩余天数: 8天 | 日均可用: ¥270
+```
 
-1. **账本隔离** - 各账本数据独立，预算分开计算
-2. **自动保存** - 所有操作即时写入文件
-3. **多端同步** - 使用 iCloud 路径可在 iPhone/iPad 文件 App 查看
-4. **分类推断** - 系统会尝试从描述推断分类，不确定时会询问
+## 🔧 Advanced Usage
 
-## 更新日志
+### Keyword Recognition
 
-### v1.0
-- 多账本支持
-- 智能关键词识别
-- 预算管理
-- iCloud 同步
-- 详细的操作步骤指南
+The skill automatically detects ledgers:
 
-## License
+| Input | Detected Ledger | Why |
+|-------|-----------------|-----|
+| "Lunch 35" | Personal | Default |
+| "Family dinner 200" | Household | "Family" keyword |
+| "Hotel 500" | Travel | Travel context |
 
-MIT License
+### Cross-Ledger Summary
+
+```
+You: Show all expenses
+Claude: === March 2026 - All Ledgers ===
+
+[Personal] Total: ¥3,245
+[Household] Total: ¥5,600
+[Travel] Total: ¥8,200
+─────────────────────────
+Grand Total: ¥17,045
+```
+
+## 🤝 Contributing
+
+Contributions welcome! Please:
+1. Fork the repository
+2. Create a feature branch
+3. Submit a pull request
+
+## 📄 License
+
+MIT License - feel free to use and modify!
+
+## 🙏 Credits
+
+Created with ❤️ using [Claude Code](https://claude.ai/code)
+
+---
+
+⭐️ Star this repo if you find it useful!
